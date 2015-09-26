@@ -38,4 +38,9 @@ class Latitude
     {
         $this->latitude = $latitude;
     }
+
+    public function asFloat()
+    {
+        return $this->latitude;
+    }
 }
