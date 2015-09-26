@@ -105,4 +105,3 @@ angular
     .factory('Container', function ($resource, API_BASE_URL) {
         return $resource(API_BASE_URL + "/containers/:id");
     });
-
