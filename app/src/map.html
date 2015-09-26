@@ -1,0 +1,10 @@
+<style>
+    #map {
+        width: 100%;
+        height: 300px;
+    }
+</style>
+<div class="alert alert-danger" role="alert" ng-if="vm.error">
+    Error loading container: {{ vm.error }}
+</div>
+<div id="map" map marker="vm.container" ng-if="!vm.error"></div>
