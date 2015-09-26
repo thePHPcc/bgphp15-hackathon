@@ -13,6 +13,10 @@ angular
                 templateUrl: 'src/main.html',
                 controller: 'MainController as vm'
             })
+            .when('/tracking/:id', {
+                templateUrl: 'src/map.html',
+                controller: 'TrackingController as vm'
+            })
             .otherwise({
                 redirectTo: '/'
             });
@@ -37,6 +41,54 @@ angular
             
             function saveError(err) {
                 vm.error = err;
+            }
+        };
+    })
+    
+    .controller('TrackingController', function ($routeParams, Container) {
+        var vm = this;
+        
+        Container.get({id: $routeParams.id}, containerLoaded);
+        
+        function containerLoaded(resource) {
+            vm.container = resource;
+        }
+    })
+    
+    .directive('map', function () {
+        return {
+            scope: {
+                marker: '=',
+            },
+            link: function (scope, element) {
+                var map;
+                
+                if (document.readyState === "complete") {
+                    initialize();
+                } else {
+                    google.maps.event.addDomListener(window, 'load', initialize);
+                }
+                
+                function initialize() {
+                    var mapCenter = new google.maps.LatLng(
+                        scope.marker.latitude,
+                        scope.marker.longitude
+                    );
+    
+                    var mapOptions = {
+                        center: mapCenter,
+                        zoom: 11,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
+    
+                    map = new google.maps.Map(element[0], mapOptions);
+    
+                    var marker = new google.maps.Marker({
+                        position: mapCenter,
+                        map: map
+                    });
+                }
+                
             }
         };
     })
