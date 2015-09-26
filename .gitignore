@@ -1,4 +1,4 @@
-/.idea
-/src/autoload.php
-/cache.properties
+/api/.idea
+/api/src/autoload.php
+/api/cache.properties
 
