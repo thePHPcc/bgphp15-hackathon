@@ -29,11 +29,11 @@ class Api
      */
     public function handle(HttpRequest $request)
     {
-        if ($request->isPost() && $request->getUrl()->getFirstComponent() == 'container') {
+        if ($request->isPost() && $request->getUrl()->getFirstComponent() == 'containers') {
             return $this->writer->registerContainer();
         }
 
-        if ($request->isGet() && $request->getUrl()->getFirstComponent() == 'container') {
+        if ($request->isGet() && $request->getUrl()->getFirstComponent() == 'containers') {
             return $this->reader->locateContainer(
                 ContainerTrackingNumber::fromString($request->getUrl()->getSecondComponent())
             );

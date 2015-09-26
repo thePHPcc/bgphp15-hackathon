@@ -13,7 +13,7 @@ class HttpRequestUrl
 
     public static function fromSuperglobals()
     {
-        return new self('lazy developer @todo');
+        return new self('http://example.com/container');
     }
 
     private function __construct($url)

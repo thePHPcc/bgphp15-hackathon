@@ -12,6 +12,11 @@ class HttpRequest
         return self($method, $url);
     }
 
+    public static function fromSuperglobals()
+    {
+        return self($_SERVER['REQUEST_METHOD'], HttpRequestUrl::fromSuperglobals());
+    }
+
     private function __construct($type, HttpRequestUrl $url)
     {
         $this->ensureMethodIsSupported($type);
