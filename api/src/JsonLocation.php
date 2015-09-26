@@ -26,7 +26,6 @@ class JsonLocation
         $this->location = $location;
     }
 
-
     public function json()
     {
         return json_encode(
