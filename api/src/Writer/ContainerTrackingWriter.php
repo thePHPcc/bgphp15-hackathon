@@ -1,6 +1,6 @@
 <?php
 
-namespace bgphp\nameless;
+namespace bgphp15\nameless;
 
 class ContainerTrackingWriter implements ContainerTrackingWriteApi
 {

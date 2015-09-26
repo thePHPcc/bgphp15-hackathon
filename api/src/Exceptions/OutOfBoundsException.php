@@ -1,7 +1,7 @@
 <?php
 
-namespace bgphp\nameless;
+namespace bgphp15\nameless;
 
-class OutOfBoundsException extends \OutOfBoundsExceptionException implements ContainerTrackingException
+class OutOfBoundsException extends \OutOfBoundsException implements ContainerTrackingException
 {
 }
