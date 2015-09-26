@@ -27,15 +27,15 @@ class Location
     public static function fromCoordinates($latitude, $longitude)
     {
         if (!is_float($latitude) || !is_float($longitude)) {
-        	throw new \InvalidArgumentException();
+            throw new InvalidArgumentException();
         }
 
         if ($latitude < -90 || $latitude > 90) {
-        	throw new \OutOfBoundsException();
+            throw new OutOfBoundsException();
         }
 
         if ($longitude < -180 || $longitude > 180) {
-        	throw new \OutOfBoundsException();
+            throw new OutOfBoundsException();
         }
 
         return new self($latitude, $longitude);
