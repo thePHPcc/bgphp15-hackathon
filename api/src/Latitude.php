@@ -34,7 +34,7 @@ class Latitude
     /**
      * @param float $latitude
      */
-    private function __construct($longitude)
+    private function __construct($latitude)
     {
         $this->latitude = $latitude;
     }

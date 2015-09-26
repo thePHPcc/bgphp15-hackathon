@@ -8,44 +8,32 @@ namespace bgphp15\nameless;
 class Location
 {
     /**
-     * @var float
+     * @var Latitude
      */
     private $latitude;
 
     /**
-     * @var float
+     * @var Longitude
      */
     private $longitude;
 
     /**
-     * @param  float $latitude
-     * @param  float $longitude
+     * @param  Latitude $latitude
+     * @param  Longitude $longitude
      * @return self
      * @throws InvalidArgumentException
      * @throws OutOfBoundsException
      */
-    public static function fromCoordinates($latitude, $longitude)
+    public static function fromCoordinates(Latitude $latitude, Longitude $longitude)
     {
-        if (!is_float($latitude) || !is_float($longitude)) {
-            throw new InvalidArgumentException();
-        }
-
-        if ($latitude < -90 || $latitude > 90) {
-            throw new OutOfBoundsException();
-        }
-
-        if ($longitude < -180 || $longitude > 180) {
-            throw new OutOfBoundsException();
-        }
-
         return new self($latitude, $longitude);
     }
         
     /**
-     * @param float $latitude
-     * @param float $longitude
+     * @param Latitude $latitude
+     * @param Longitude $longitude
      */
-    private function __construct($latitude, $longitude)
+    private function __construct(Latitude $latitude, Longitude $longitude)
     {
         $this->latitude = $latitude;
         $this->longitude = $longitude;

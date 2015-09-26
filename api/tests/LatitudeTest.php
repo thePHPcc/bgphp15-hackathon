@@ -10,4 +10,21 @@ class LatitudeTest extends \PHPUnit_Framework_TestCase
 
 		$this->assertInstanceOf(Latitude::class, $latitude);
 	}	
+
+	/**
+	 * @expectedException Exception
+	 * @dataProvider invalidCoordinates
+	 */
+	public function testCannotBeCreatedFromInvalidArguments($latitude)
+	{
+		Latitude::fromFloat($latitude);
+	}
+
+	public function invalidCoordinates()
+	{
+		return [
+			[null],
+			[-91]
+		];	
+	}
 }
