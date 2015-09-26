@@ -2,4 +2,5 @@
 /api/.idea
 /api/src/autoload.php
 /api/cache.properties
+*.DS_Store
 
