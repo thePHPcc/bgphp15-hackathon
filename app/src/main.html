@@ -1,7 +1,7 @@
 <div class="jumbotron">
     <p>To track existing container, insert container ID below</p>
-    <p><input type="text"></p>
-    <button class="btn btn-primary">Track</button>
+    <p><input type="text" ng-model="vm.trackingId"></p>
+    <button class="btn btn-primary" ng-click="vm.track(vm.trackingId)">Track</button>
     <hr>
     <p><a class="btn btn-primary btn-lg" ng-click="registerNew()">Register new container</a></p>
     <div class="alert alert-success" role="alert" ng-if="vm.newContainer">

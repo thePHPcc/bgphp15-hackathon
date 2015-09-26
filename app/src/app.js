@@ -22,10 +22,14 @@ angular
             });
     })
     
-    .controller('MainController', function (Container) {
+    .controller('MainController', function ($location, Container) {
         var vm = this;
         vm.newContainer = null;
         vm.error = null;
+        
+        vm.track = function (containerId) {
+            $location.path('/tracking/' + containerId);
+        };
         
         vm.registerNew = function () {
             vm.newContainer = null;
@@ -47,11 +51,16 @@ angular
     
     .controller('TrackingController', function ($routeParams, Container) {
         var vm = this;
+        vm.error = null;
         
-        Container.get({id: $routeParams.id}, containerLoaded);
+        Container.get({id: $routeParams.id}, containerLoaded, loadError);
         
         function containerLoaded(resource) {
             vm.container = resource;
+        }
+        
+        function loadError(err) {
+            vm.error = err;
         }
     })
     
