@@ -38,4 +38,9 @@ class Longitude
     {
         $this->longitude = $longitude;
     }
+
+    public function asFloat()
+    {
+        return $this->longitude;
+    }
 }

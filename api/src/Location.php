@@ -38,4 +38,14 @@ class Location
         $this->latitude = $latitude;
         $this->longitude = $longitude;
     }
+
+    public function latitude()
+    {
+        return $this->latitude; 
+    }
+
+    public function longitude()
+    {
+        return $this->longitude; 
+    }
 }
