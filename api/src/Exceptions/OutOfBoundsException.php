@@ -2,6 +2,6 @@
 
 namespace bgphp\nameless;
 
-class InvalidArgumentException extends \OutOfBoundsExceptionException implements ContainerTrackingException
+class OutOfBoundsException extends \OutOfBoundsExceptionException implements ContainerTrackingException
 {
 }
