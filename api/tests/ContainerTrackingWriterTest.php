@@ -1,6 +1,6 @@
 <?php
 
-namespace bgphp\nameless;
+namespace bgphp15\nameless;
 
 class ContainerTrackingWriterTest extends \PHPUnit_Framework_TestCase
 {

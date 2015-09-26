@@ -1,6 +1,6 @@
 <?php
 
-namespace bgphp\nameless;
+namespace bgphp15\nameless;
 
 class ContainerTrackingNumberTest extends \PHPUnit_Framework_TestCase
 {
@@ -25,7 +25,7 @@ class ContainerTrackingNumberTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \bgphp\nameless\InvalidArgumentException
+     * @expectedException \bgphp15\nameless\InvalidArgumentException
      */
     public function testCannotBeCreatedFromEmptyString()
     {
