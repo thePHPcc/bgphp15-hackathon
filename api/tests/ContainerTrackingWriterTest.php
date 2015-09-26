@@ -4,7 +4,7 @@ namespace bgphp\nameless;
 
 class ContainerTrackingWriterTest extends \PHPUnit_Framework_TestCase
 {
-    public function testContainerCanBeCreated()
+    public function testContainerRegistrationAssignsTrackingNumber()
     {
         $tracker = new ContainerTrackingWriter;
 
