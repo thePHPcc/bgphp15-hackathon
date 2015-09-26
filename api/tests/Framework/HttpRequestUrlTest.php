@@ -16,7 +16,14 @@ class HttpRequestUrlTest extends \PHPUnit_Framework_TestCase
     {
         $url = HttpRequestUrl::fromString('http://example.com/first/component');
 
-        $this->assertEquals('first', $url->firstComponent());
+        $this->assertEquals('first', $url->getFirstComponent());
+    }
+
+    public function testSecondComponentCanBeRetrieved()
+    {
+        $url = HttpRequestUrl::fromString('http://example.com/first/component');
+
+        $this->assertEquals('component', $url->getSecondComponent());
     }
 
     /**
@@ -26,6 +33,6 @@ class HttpRequestUrlTest extends \PHPUnit_Framework_TestCase
     {
         $url = HttpRequestUrl::fromString('http://example.com');
 
-        $url->firstComponent();
+        $url->getFirstComponent();
     }
 }

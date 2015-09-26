@@ -4,15 +4,42 @@ namespace bgphp15\nameless;
 
 class Api
 {
-    public function process(HttpRequest $request)
+    /**
+     * @var ContainerTrackingReadApi
+     */
+    private $reader;
+
+    /**
+     * @var ContainerTrackingWriteApi
+     */
+    private $writer;
+
+    /**
+     * @param ContainerTrackingReadApi  $reader
+     * @param ContainerTrackingWriteApi $writer
+     */
+    public function __construct(ContainerTrackingReadApi $reader, ContainerTrackingWriteApi $writer)
     {
-        if ($request->isPost() && $request->getUrl()->firstComponent() == 'container') {
-            return $this->handleRegisterContainer();
+        $this->reader = $reader;
+        $this->writer = $writer;
+    }
+
+    /**
+     * @param HttpRequest $request
+     */
+    public function handle(HttpRequest $request)
+    {
+        if ($request->isPost() && $request->getUrl()->getFirstComponent() == 'containers') {
+            return $this->writer->registerContainer();
         }
 
-        if ($request->isGet() && $request->getUrl()->firstComponent() == 'container') {
-            return $this->handleLocateContainer($request->getParameter('latitude') && $request->getParameter('long @todo'));
-        }
+        if ($request->isGet() && $request->getUrl()->getFirstComponent() == 'containers') {
 
+            $location = $this->reader->locateContainer(
+                    ContainerTrackingNumber::fromString($request->getUrl()->getSecondComponent())
+            );
+
+            return (JsonLocation::fromLocation($location))->json();
+        }
     }
 }
