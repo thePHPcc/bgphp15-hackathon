@@ -9,12 +9,12 @@ class HttpRequest
 
     public static function fromParameters($method, HttpRequestUrl $url)
     {
-        return self($method, $url);
+        return new self($method, $url);
     }
 
     public static function fromSuperglobals()
     {
-        return self($_SERVER['REQUEST_METHOD'], HttpRequestUrl::fromSuperglobals());
+        return new self($_SERVER['REQUEST_METHOD'], HttpRequestUrl::fromSuperglobals());
     }
 
     private function __construct($type, HttpRequestUrl $url)
