@@ -39,7 +39,8 @@ class Api
                     ContainerTrackingNumber::fromString($request->getUrl()->getSecondComponent())
             );
 
-            return (JsonLocation::fromLocation($location))->json();
+            $jsonLocation = JsonLocation::fromLocation($location);
+            return $jsonLocation->json();
         }
     }
 }
