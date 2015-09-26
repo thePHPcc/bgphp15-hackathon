@@ -34,9 +34,12 @@ class Api
         }
 
         if ($request->isGet() && $request->getUrl()->getFirstComponent() == 'containers') {
-            return $this->reader->locateContainer(
-                ContainerTrackingNumber::fromString($request->getUrl()->getSecondComponent())
+
+            $location = $this->reader->locateContainer(
+                    ContainerTrackingNumber::fromString($request->getUrl()->getSecondComponent())
             );
+
+            return (JsonLocation::fromLocation($location))->json();
         }
     }
 }

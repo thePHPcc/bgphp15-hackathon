@@ -48,10 +48,10 @@ class ApiTest extends \PHPUnit_Framework_TestCase
         $request->method('getUrl')->willReturn($requestUrl);
 
         $trackingNumber = ContainerTrackingNumber::fromString('the-tracking-number');
-        $location = $this->getMockBuilder(Location::class)->disableOriginalConstructor()->getMock();
+        $location = Location::fromCoordinates(Latitude::fromFloat(10.0), Longitude::fromFloat(20.0));
 
         $this->reader->expects($this->once())->method('locateContainer')->with($trackingNumber)->willReturn($location);
 
-        $result = $this->api->handle($request);
+        $this->assertEquals('{"latitude":10,"longitude":20}', $this->api->handle($request));
     }
 }
