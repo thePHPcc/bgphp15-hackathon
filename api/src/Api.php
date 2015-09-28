@@ -30,7 +30,10 @@ class Api
     public function handle(HttpRequest $request)
     {
         if ($request->isPost() && $request->getUrl()->getFirstComponent() == 'containers') {
-            return $this->writer->registerContainer();
+            $trackingNumber = $this->writer->registerContainer();
+            
+            $jsonTrackingNumber = JsonContainerTrackingNumber::fromNumber($trackingNumber);
+            return $jsonTrackingNumber->json();
         }
 
         if ($request->isGet() && $request->getUrl()->getFirstComponent() == 'containers') {

@@ -30,10 +30,12 @@ class ApiTest extends \PHPUnit_Framework_TestCase
 
         $request->method('isPost')->willReturn(true);
         $request->method('getUrl')->willReturn($requestUrl);
+        
+        $trackingNumber = ContainerTrackingNumber::fromString('the-tracking-number');
 
-        $this->writer->expects($this->once())->method('registerContainer');
+        $this->writer->expects($this->once())->method('registerContainer')->willReturn($trackingNumber);
 
-        $result = $this->api->handle($request);
+        $this->assertEquals('{"id":"the-tracking-number"}', $this->api->handle($request));
     }
 
     public function testHandlesGetRequestToLocateContainer()
