@@ -53,6 +53,11 @@ class HttpRequestUrl
     private function getComponent($index)
     {
         $parts = parse_url($this->url);
+        
+        if (!isset($parts['path'])) {
+            throw new OutOfBoundsException;
+        }
+        
         $components = explode('/', $parts['path']);
 
         if (!isset($components[$index])) {
