@@ -5,7 +5,7 @@ angular
         'ngRoute',
         'ngResource'
     ])
-    .constant('API_BASE_URL', 'http://37.60.230.241/bgphp15-hackathon/api')
+    .constant('API_BASE_URL', 'http://37.60.230.241:8080')
     
     .config(function ($routeProvider) {
         $routeProvider
