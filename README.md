@@ -4,6 +4,13 @@ Code written during the hackathon at Bulgaria PHP Conference 2015.
 
 This is example code that is not production-ready. It is intended for studying and learning purposes.
 
+## This is a fork of the original
+
+The original repo that contains only code written during the hackathon can be found here: https://github.com/thePHPcc/bgphp15-hackathon
+
+This repo contains few finishing touches to wire everything together and make it actually work.
+Currently the working example can be found here: http://37.60.230.241/app/
+
 ## Original Requirements
 
 Most shipping companies provide some form of tracking service, where a container can be traced by its identification number. Your task is to implement a very cool container tracking web application, which relies on live GPS data (coordinates) from a web service. The service needs to accept a container tracking number (a.k.a. container ID) and be able to visualise the location of the corresponding container (preferrably on a map). The UI of your web app is totally up to you.
