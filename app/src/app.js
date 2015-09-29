@@ -5,7 +5,7 @@ angular
         'ngRoute',
         'ngResource'
     ])
-    .constant('API_BASE_URL', 'http://37.60.230.241/bgphp15-hackathon/api')
+    .constant('API_BASE_URL', 'http://37.60.230.241')
     
     .config(function ($routeProvider) {
         $routeProvider
@@ -56,6 +56,7 @@ angular
         Container.get({id: $routeParams.id}, containerLoaded, loadError);
         
         function containerLoaded(resource) {
+
             vm.container = resource;
         }
         

@@ -13,7 +13,12 @@ class HttpRequestUrl
 
     public static function fromSuperglobals()
     {
-        return new self('http://example.com/container');
+        $url = (isset($_SERVER['HTTPS']) ? 'https' : 'http')
+             . '://' . $_SERVER['HTTP_HOST']
+             . ($_SERVER['SERVER_PORT'] == '80' ? '' : ':' . $_SERVER['SERVER_PORT'])
+             . $_SERVER['REQUEST_URI'];
+             
+        return new self($url);
     }
 
     private function __construct($url)
@@ -48,6 +53,11 @@ class HttpRequestUrl
     private function getComponent($index)
     {
         $parts = parse_url($this->url);
+        
+        if (!isset($parts['path'])) {
+            throw new OutOfBoundsException;
+        }
+        
         $components = explode('/', $parts['path']);
 
         if (!isset($components[$index])) {

@@ -29,10 +29,20 @@ class HttpRequestUrlTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException \bgphp15\nameless\OutOfBoundsException
      */
-    public function testNonExistingComponentCannotBeRetrieved()
+    public function testComponentCannotBeRetrievedWhenNoPath()
     {
         $url = HttpRequestUrl::fromString('http://example.com');
 
         $url->getFirstComponent();
+    }
+    
+    /**
+     * @expectedException \bgphp15\nameless\OutOfBoundsException
+     */
+    public function testNonExistingComponentCannotBeRetrieved()
+    {
+        $url = HttpRequestUrl::fromString('http://example.com/first');
+
+        $url->getSecondComponent();
     }
 }
